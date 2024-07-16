@@ -1,0 +1,29 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .desktop-view {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .landing-page,
+  .signup-page {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  @media (min-width: 768px) {
+    .desktop-view {
+      display: flex;
+      flex-direction: row;
+    }
+  
+    .landing-page,
+    .signup-page {
+      flex: 1;
+      padding: 20px;
+    }
+  }
+  

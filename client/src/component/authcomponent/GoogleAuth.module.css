@@ -1,0 +1,20 @@
+.googleSigninButton {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffff; /* Button background color */
+    border: 1px solid #cccccc; /* Button border color */
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.googleIcon {
+    width: 20px; /* Adjust the size of the icon as needed */
+    height: 20px; /* Adjust the size of the icon as needed */
+    margin-right: 10px; /* Space between the icon and the text */
+}
+
+.googleSigninButtonSpan {
+    font-size: 16px; /* Adjust the font size as needed */
+    color: black; /* Text color */
+}

@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Ga+Maamli&family=Roboto+Slab:wght@100..900&display=swap');
+
+.chatActivator {
+  font-size: 2rem !important;
+  color: #d71e1f;
+}
+.chatRecoder {
+  height: 30px !important;
+  width: 30px !important;
+}
+  @media (min-width: 768px) {
+    .chatContainer {
+      max-width: 100%; 
+    }
+    .soundWave {
+      height: 300px;
+      padding: 0, 20px, 0, 20px !important;
+    }
+    .chatActivator {
+      font-size: 5rem !important;
+      color: #d71e1f;
+    }
+  
+  }

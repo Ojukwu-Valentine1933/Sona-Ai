@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+.pageCard {
+  background-image: url("../../assets/splash-screen-image.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 670px !important;
+  width: 100% !important;
+}
+/* .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75vh;
+    background-color: rgba(0, 0, 0, 0.1);
+  
+  } */
+.cardText {
+  padding: 400px 20px 0 20px;
+  font-family: "Inter", sans-serif;
+}
+
+.boldText {
+  font-size: 23px;
+  font-weight: 700;
+}
+.subtext {
+  font-size: 12px;
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) and (min-width: 1440px){
+  .pageCard {
+    /* background-image: url("../../assets/splash-screen-image.png"); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* height: 890px !important; */
+    height: 100vh !important;
+    /* width: 100% !important; */
+    
+    align-items: center;
+  }
+
+ 
+  .btn {
+    display: none !important;
+  }
+  .cardText {
+    padding: 500px 20px 0 20px;
+    font-family: "Inter", sans-serif;
+  }
+
+  .boldText {
+    font-size: 33px;
+    font-weight: 900;
+  }
+  .subtext {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+}

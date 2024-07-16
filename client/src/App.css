@@ -1,0 +1,29 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.desktop-view {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.landing-page,
+.signup-page {
+  flex: 1;
+  /* padding: 20px; */
+}
+
+.get-started-button {
+  display: block;
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+ .btn  {
+    display: none;
+  }
+  
+}
