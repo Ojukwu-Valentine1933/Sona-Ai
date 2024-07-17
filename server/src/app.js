@@ -8,7 +8,7 @@ const NewchatRoute = require("./route/NewChatRouter")
 
 
 const corsOption = {
-    origin: "http://localhost:3000",
+    origin: "https://sona-acm6xns2w-ojukwu-valentine-chibuzor-s-projects.vercel.app",
     optionSuccessStatus: 200,
 };
 
