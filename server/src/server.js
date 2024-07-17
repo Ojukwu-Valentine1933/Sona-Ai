@@ -11,7 +11,7 @@ const socketServer  = require("./SocketServer")
 
 const io = new Server(httpServer, {
     cors: {
-      origin: "https://sona-acm6xns2w-ojukwu-valentine-chibuzor-s-projects.vercel.app",
+      origin: "https://sona-ai.vercel.app",
     },
   });
 
