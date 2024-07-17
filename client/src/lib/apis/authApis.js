@@ -14,27 +14,52 @@ export const authApi = createApi({
   endpoints: (builder) => ({
     loginWithGoogle: builder.mutation({
       query: (payload) => ({
-        url: `/auth/login`,
+        url: "/auth/login",
         method: "POST",
         headers: {
           Authorization: `Bearer ${payload}`,
         },
       }),
-
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
-          await queryFulfilled;
-          await dispatch(
-            userApi.endpoints.getCurrentUser.initiate(
-              localStorage.getItem("authToken")
-            )
-          );
+          const { data } = await queryFulfilled; // Ensure queryFulfilled returns data
+          localStorage.setItem("authToken", data.token); // Save token to localStorage if needed
+          await dispatch(userApi.endpoints.getCurrentUser.initiate(data.token)); // Correctly initiate getCurrentUser
         } catch (error) {
-          console.log(error);
+          console.error("Error during loginWithGoogle mutation:", error);
         }
       },
     }),
   }),
 });
+// export const authApi = createApi({
+//   reducerPath: "authApi",
+//   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
+//   endpoints: (builder) => ({
+//     loginWithGoogle: builder.mutation({
+//       query: (payload) => ({
+//         url: `/auth/login`,
+//         method: "POST",
+//         headers: {
+//           Authorization: `Bearer ${payload}`,
+//         },
+//       }),
+
+//       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+//         try {
+
+//           await queryFulfilled;
+//           await dispatch(
+//             userApi.endpoints.getCurrentUser.initiate(
+//               localStorage.getItem("authToken")
+//             )
+//           );
+//         } catch (error) {
+//           console.log(error);
+//         }
+//       },
+//     }),
+//   }),
+// });
 
 export const { useLoginWithGoogleMutation } = authApi;

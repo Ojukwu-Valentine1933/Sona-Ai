@@ -1,17 +1,14 @@
-const express = require("express")
-const app = express()
+const express = require("express");
+const app = express();
 const cors = require("cors");
 const authRoute = require("./route/authRoute");
 const AudioRoute = require("./route/AudioRouting");
-const NewchatRoute = require("./route/NewChatRouter")
-
-
+const NewchatRoute = require("./route/NewChatRouter");
 
 const corsOption = {
-    origin: "https://sona-ai.vercel.app",
-    optionSuccessStatus: 200,
+  origin: ["https://sona-ai.vercel.app", "http://localhost:3000"],
+  optionSuccessStatus: 200,
 };
-
 
 app.use(cors(corsOption));
 
@@ -19,15 +16,12 @@ app.use(cors(corsOption));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/auth", authRoute)
+app.use("/auth", authRoute);
 app.use("/audio", AudioRoute);
 app.use("/save", NewchatRoute);
 
-
 app.get("/", (req, res) => {
-    res.json({ message: "Server is running fine" });
-})
+  res.json({ message: "Server is running fine" });
+});
 
-
-module.exports = app
-
+module.exports = app;
