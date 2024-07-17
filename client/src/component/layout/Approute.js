@@ -10,6 +10,7 @@ const AppRoute = () => {
     <Routes>
       <Route path="/" element={<SplashScreenPage />} />
       <Route path="/signup" element={<SignUpPage />} />
+      <Route path="/chat/:chatId" element={<NewChatPage />} />  
       <Route path="/new-chat" element={<NewChatPage />} />
       <Route path="/auth" element={<GoogleAuthPage />} />
       <Route path="/profile" element={<ProfilePage />} />

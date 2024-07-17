@@ -9,7 +9,8 @@ const Layout = () => {
   return (
     <>
       <header>
-        {pathname === "/new-chat" && <NavBar />}
+        {pathname === "/new-chat" || pathname.startsWith("/chat/") ? <NavBar /> : null}
+       
       </header>
       <main>
         <AppRoute />
