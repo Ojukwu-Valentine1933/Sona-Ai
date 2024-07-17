@@ -3,11 +3,12 @@ const app = express()
 const cors = require("cors");
 const authRoute = require("./route/authRoute");
 const AudioRoute = require("./route/AudioRouting");
+const NewchatRoute = require("./route/NewChatRouter")
 
 
 
 const corsOption = {
-    origin: "https://sona-acm6xns2w-ojukwu-valentine-chibuzor-s-projects.vercel.app",
+    origin: "http://localhost:3000",
     optionSuccessStatus: 200,
 };
 
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/auth", authRoute)
 app.use("/audio", AudioRoute);
+app.use("/save", NewchatRoute);
 
 
 app.get("/", (req, res) => {

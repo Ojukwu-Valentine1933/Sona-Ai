@@ -11,7 +11,7 @@ const socketServer  = require("./SocketServer")
 
 const io = new Server(httpServer, {
     cors: {
-      origin: "http://localhost:3000",
+      origin: "https://sona-acm6xns2w-ojukwu-valentine-chibuzor-s-projects.vercel.app",
     },
   });
 
