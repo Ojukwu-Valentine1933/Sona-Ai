@@ -11,7 +11,7 @@ const CreateNewChatButton = ({ onCreate }) => {
     setIsCreating(true); // Set state to indicate creation process
 
     try {
-      const response = await axios.post('https://sona-acm6xns2w-ojukwu-valentine-chibuzor-s-projects.vercel.app/save/chats', {
+      const response = await axios.post('http://localhost:3001/chat/new-chat', {
         message: 'New chat message',
       });
 
@@ -31,7 +31,7 @@ const CreateNewChatButton = ({ onCreate }) => {
       style={{
         width: '100%',
         backgroundColor: '#d71e1f',
-        height: '30px',
+        height: '40px',
         color: 'white',
         borderRadius: '5px',
         border: '#d71e1f',
@@ -44,6 +44,7 @@ const CreateNewChatButton = ({ onCreate }) => {
 };
 
 export default CreateNewChatButton;
+
 
 
 

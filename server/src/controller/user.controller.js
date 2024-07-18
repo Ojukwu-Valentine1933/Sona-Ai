@@ -1,34 +1,31 @@
 const { findUserByEmail, createNewUser } = require("../services/userServices");
 
 const googleAuth = async (req, res) => {
- try{
-  const { email, picture, given_name, family_name, token } = req.user;
+  try {
+    const { email, picture, given_name, family_name, token } = req.user;
 
-  const user = await findUserByEmail(email);
-  if (!user) {
-    const newUser = await createNewUser({
-      firstName: given_name,
-      lastName: family_name,
-      profilePicture: picture,
-       email,
-    });
+    const user = await findUserByEmail(email);
+    if (!user) {
+      const newUser = await createNewUser({
+        firstName: given_name,
+        lastName: family_name,
+        profilePicture: picture,
+        email,
+      });
 
-    if(!newUser){
-      return res.status(400).json({ error:"login failed" })
+      if (!newUser) {
+        return res.status(400).json({ error: "login failed" });
+      }
+      return res.status(200).json({ message: "success", newUser, token });
     }
-    return res.status(200).json({ message: "success", newUser, token });
-  }
     return res.status(201).json({ message: "success", user, token });
- 
- }catch(error){
-  return res.status(500).json({ error:"something went wrong" })
- }
-}
-
+  } catch (error) {
+    return res.status(500).json({ error: "something went wrong" });
+  }
+};
 
 const getCurrentUser = async (req, res) => {
   try {
-
     const { email } = req.user;
     const user = await findUserByEmail(email);
     if (!user) {

@@ -1,34 +1,29 @@
-const verifyToken = require("../helpers/authHelpers")
+const verifyToken = require("../helpers/authHelpers");
+
+const _checkThatValidTokenFormatIsProvided = (authToken) => {
+  if (!authToken || !authToken.startsWith("Bearer ")) {
+    throw new Error("Invalid token format!");
+  }
+
+  return authToken.split(" ")[1];
+};
 
 const Authenticate = async (req, res, next) => {
-    try {
+  try {
+    const authHeader = req.headers["authorization"];
 
-      const authHeader = req.headers["authorization"];
-      const authToken = _checkThatValidTokenFormatIsProvided(authHeader);
-      const payload = await verifyToken(authToken);
+    if (!authHeader) {
+      throw new Error("Authorization header missing");
+    }
 
-      
-  
-      req.user = {...payload, token: authToken};
-      next();
-    } catch (error) {
-      next(error);
-    }
-  };
-  
-  const _checkThatValidTokenFormatIsProvided = (authToken) => {
-    let splitToken;
-  
-    if (
-      !authToken ||
-      (splitToken = authToken.split(" ")).length !== 2 ||
-      splitToken[0].toLowerCase() !== "bearer" ||
-      !splitToken[1]
-    ) {
-      throw new Error("Invalid token!");
-    }
-  
-    return splitToken[1];
-  };
-  
-  module.exports = Authenticate;
+    const authToken = _checkThatValidTokenFormatIsProvided(authHeader);
+    const payload = await verifyToken(authToken);
+
+    req.user = { ...payload, token: authToken };
+    next();
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = Authenticate;

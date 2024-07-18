@@ -9,13 +9,13 @@ const audioSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-const chatSchema = new Schema(
-  {
-    title: { type: String },
-    audioMedia: { type: [audioSchema], default:[] },
-  },
-  { timestamps: true }
-);
-const Chat = mongoose.model("Chat", userSchema);
+// const chatSchema = new Schema(
+//   {
+//     title: { type: String },
+//     audioMedia: { type: [audioSchema], default:[] },
+//   },
+//   { timestamps: true }
+// );
+// const Chat = mongoose.model("Chat", userSchema);
 
-module.exports = Chat;
+// module.exports = Chat;

@@ -20,25 +20,6 @@ function userLeave(username) {
   if (index >= 0) {
     return users.splice(index, 1)[0]; // Return the removed user
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 }
 
 
@@ -46,6 +27,8 @@ function userLeave(username) {
 function getRoomUsers(room) {
   return users.filter((user) => user.room === room);
 }
+
+
 
 module.exports = {
   userJoin,

@@ -2,7 +2,7 @@ import styles from "./AppRoute.module.css";
 import { useGetCurrentUserMutation } from "../../lib/apis/userApi";
 import { useEffect, useState } from "react";
 import CreateNewChatButton from "../../helpers/createNewChat";
-
+import ChatButtonFetch from "../../helpers/getAllChats";
 
 const NavBar = () => {
   const [chatId, setChatId] = useState("");
@@ -53,6 +53,7 @@ const NavBar = () => {
             ></button>
           </div>
           <div className={`offcanvas-body ${styles.navbar}`}>
+          
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li className="nav-item">
                 <a className="nav-link active" aria-current="page">
@@ -62,7 +63,16 @@ const NavBar = () => {
               <li className="nav-item">
                 <a className="nav-link">Link</a>
               </li>
-              <li className="nav-item dropdown">
+              <form className="d-flex mt-3" role="search">
+              {chatId ? (
+                <p>Chat ID: {chatId}</p>
+              ) : (
+                <CreateNewChatButton onCreate={handleCreateChat} />
+              )}
+            </form>
+           <ChatButtonFetch/>
+
+              {/* <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
                   role="button"
@@ -85,20 +95,12 @@ const NavBar = () => {
                     <a className="dropdown-item">Something else here</a>
                   </li>
                 </ul>
-              </li>
+              </li> */}
             </ul>
-            <form className="d-flex mt-3" role="search">
-              {chatId ? (
-                <p>Chat ID: {chatId}</p>
-              ) : (
-                <CreateNewChatButton onCreate={handleCreateChat} />
-              )}
-              
-            </form>
+           
           </div>
         </div>
       </div>
-
     </nav>
   );
 };

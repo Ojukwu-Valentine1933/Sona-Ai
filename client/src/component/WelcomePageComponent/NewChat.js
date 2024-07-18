@@ -73,7 +73,7 @@ const NewChat = () => {
     formData.append("audio", blob, 'recording.webm');
   
     try {
-      const response = await fetch("https://sona-ai.vercel.app/audio/upload-audio", {
+      const response = await fetch("http://localhost:3001/audio/upload-audio", {
         method: "POST",
         body: formData,
       });
