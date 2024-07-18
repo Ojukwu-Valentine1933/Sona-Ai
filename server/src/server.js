@@ -13,10 +13,11 @@ const io = new Server(httpServer, {
 });
 
 const startServer = async () => {
+  await mongooseConnection();
   httpServer.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });
-  mongooseConnection();
+
   socketServer.listen(io);
 };
 

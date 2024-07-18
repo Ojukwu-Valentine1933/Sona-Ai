@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { AudioRecorder } from "react-audio-voice-recorder";
+
 import Lottie from "lottie-react";
 import { useNavigate, useParams } from "react-router-dom";
 import { io } from "socket.io-client";
@@ -66,34 +66,7 @@ const NewChat = () => {
     }
   }, [chatId, navigate]);
 
-  const addAudioElement = async (blob) => {
 
-    // console.log("file Uploaded")
-    const formData = new FormData();
-    formData.append("audio", blob, 'recording.webm');
-  
-    try {
-      const response = await fetch("https://sona-ai-4.onrender.com/audio/upload-audio", {
-        method: "POST",
-        body: formData,
-      });
-  
-      if (!response.ok) {
-        // throw new Error("Failed to upload audio");
-        console.log("Failed to upload")
-      }else{
-        const data = await response.json();
-        console.log("Audio uploaded successfully:", data);
-      }
-  
-      
-      
-     
-  
-    } catch (error) {
-      console.error("Error uploading audio:", error);
-    }
-  };
 
 
 //   const fetchAudioFiles = async () =>{
@@ -154,6 +127,7 @@ const NewChat = () => {
   return (
     <>
       <div style={{ backgroundColor: "#202020", height: "100vh" }}>
+      
         {!listening ? (
           <div
             className="fixed-bottom mb-5"
@@ -175,25 +149,7 @@ const NewChat = () => {
             </button>
 
 
-            <div className="Audio-Recoder">
-              <AudioRecorder className={`${styles.chatRecoder}`}
-                
-                onRecordingComplete={addAudioElement}
-                audioTrackConstraints={{
-                  noiseSuppression: true,
-                  echoCancellation: true,
-                }}
-                
-                onNotAllowedOrFound={(err) => console.table(err)}
-                downloadOnSavePress={true}
-                downloadFileExtension="webm"
-                mediaRecorderOptions={{
-                  audioBitsPerSecond: 128000,
-                }}
-                
-              />
-              <br />
-            </div>
+            
           </div>
           
         ) : (

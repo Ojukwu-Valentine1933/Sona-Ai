@@ -3,6 +3,7 @@ import { useGetCurrentUserMutation } from "../../lib/apis/userApi";
 import { useEffect, useState } from "react";
 import CreateNewChatButton from "../../helpers/createNewChat";
 import ChatButtonFetch from "../../helpers/getAllChats";
+import { AudioRecorder } from "react-audio-voice-recorder";
 
 const NavBar = () => {
   const [chatId, setChatId] = useState("");
@@ -18,6 +19,43 @@ const NavBar = () => {
       getCurrentUser(token);
     }
   }, []);
+  const logOut = () => {
+    try {
+      localStorage.clear();
+    window.location.reload();
+    } catch (error) {
+      console.log(error)
+    }
+    
+  };
+  const addAudioElement = async (blob) => {
+
+    // console.log("file Uploaded")
+    const formData = new FormData();
+    formData.append("audio", blob, 'recording.webm');
+  
+    try {
+      const response = await fetch("https://sona-ai-4.onrender.com/audio/upload-audio", {
+        method: "POST",
+        body: formData,
+      });
+  
+      if (!response.ok) {
+        // throw new Error("Failed to upload audio");
+        console.log("Failed to upload")
+      }else{
+        const data = await response.json();
+        console.log("Audio uploaded successfully:", data);
+      }
+  
+      
+      
+     
+  
+    } catch (error) {
+      console.error("Error uploading audio:", error);
+    }
+  };
   return (
     <nav className={`navbar navbar-dark  fixed-top ${styles.navbar}`}>
       <div className="container-fluid">
@@ -52,8 +90,27 @@ const NavBar = () => {
               aria-label="Close"
             ></button>
           </div>
+          <div className="Audio-Recoder container d-flex">
+            <label className="" style={{marginRight: "20px", marginTop: "10px"}}>Record Chat:</label>
+              <AudioRecorder className={`${styles.chatRecoder} flex-end`}
+                
+                onRecordingComplete={addAudioElement}
+                audioTrackConstraints={{
+                  noiseSuppression: true,
+                  echoCancellation: true,
+                }}
+                
+                onNotAllowedOrFound={(err) => console.table(err)}
+                downloadOnSavePress={true}
+                downloadFileExtension="webm"
+                mediaRecorderOptions={{
+                  audioBitsPerSecond: 128000,
+                }}
+                
+              />
+              <br />
+            </div>
           <div className={`offcanvas-body ${styles.navbar}`}>
-          
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li className="nav-item">
                 <a className="nav-link active" aria-current="page">
@@ -64,13 +121,14 @@ const NavBar = () => {
                 <a className="nav-link">Link</a>
               </li>
               <form className="d-flex mt-3" role="search">
-              {chatId ? (
-                <p>Chat ID: {chatId}</p>
-              ) : (
-                <CreateNewChatButton onCreate={handleCreateChat} />
-              )}
-            </form>
-           <ChatButtonFetch/>
+                {chatId ? (
+                  <p>Chat ID: {chatId}</p>
+                ) : (
+                  <CreateNewChatButton onCreate={handleCreateChat} />
+                )}
+              </form>
+              <ChatButtonFetch />
+
 
               {/* <li className="nav-item dropdown">
                 <a
@@ -97,7 +155,7 @@ const NavBar = () => {
                 </ul>
               </li> */}
             </ul>
-           
+             
           </div>
         </div>
       </div>
