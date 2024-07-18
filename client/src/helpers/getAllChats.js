@@ -9,7 +9,7 @@ const ChatButtonFetch = () => {
 
   const fetchChats = async () => {
     try {
-      const response = await fetch('http://localhost:3001/chat/get-chats'); // Adjust endpoint as needed
+      const response = await fetch('https://sona-ai-4.onrender.com/chat/get-chats'); // Adjust endpoint as needed
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

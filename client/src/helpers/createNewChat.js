@@ -11,7 +11,7 @@ const CreateNewChatButton = ({ onCreate }) => {
     setIsCreating(true); // Set state to indicate creation process
 
     try {
-      const response = await axios.post('http://localhost:3001/chat/new-chat', {
+      const response = await axios.post('https://sona-ai-4.onrender.com/chat/new-chat', {
         message: 'New chat message',
       });
 

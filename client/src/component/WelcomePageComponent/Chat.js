@@ -1,7 +1,7 @@
 const Chat = () => {
     const retriveAudio = async() => {
   try {
-    const response = await fetch("http://localhost:3001/audio/audio-files", {
+    const response = await fetch("https://sona-ai-4.onrender.com/audio/audio-files", {
         method: "GET"
     })
   } catch (error) {
