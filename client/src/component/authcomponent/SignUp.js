@@ -93,7 +93,7 @@ const SignUp = ({ onGetStartedClick }) => {
                     />
                   </div>
                 </div>
-                <Link to={"/new-chat"}>
+                <Link to={""}>
                   <button
                     type="submit"
                     className={`btn mt-3 text-white`}
