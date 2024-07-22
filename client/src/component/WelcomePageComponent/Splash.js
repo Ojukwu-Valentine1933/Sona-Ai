@@ -33,7 +33,7 @@ const Splash = () => {
           Get Started
         </Link>
 
-        <span className="text-white container">Developed by: <span style={{color: "#d71e1f"}}>Ojukwu Valentine Chibuzor</span></span>
+        <span className="text-white container" style={{fontSize: "11px"}}>Developed by: <span style={{color: "#d71e1f"}}>Ojukwu Valentine Chibuzor</span></span>
       </div>
     </div>
   );
