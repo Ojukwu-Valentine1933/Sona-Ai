@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 const Splash = () => {
   return (
     <div className={`splashPage  ${styles.pageCard}`}>
+  
       <div className={`page-text text-white ${styles.cardText}`}>
+        
         <h1 className={`boldText  ${styles.boldText}`}>
           The Future of Chat is Here With{" "}
           <span style={{ color: "#d71e1f" }}>SonaAI </span>Technology
@@ -14,7 +16,9 @@ const Splash = () => {
           Revolutionizing chat with advanced AI and intuitive design, SonaAI
           offers efficient, personalized, and innovative conversational
           experiences. Transform your interactions with SonaAI and experience
-          the next generation of chat technology.
+          the next generation of chat technology.  
+          
+ 
         </p>
         <Link
           to={"/signup"}
@@ -28,6 +32,8 @@ const Splash = () => {
         >
           Get Started
         </Link>
+
+        <span className="text-white container">Developed by: <span style={{color: "#d71e1f"}}>Ojukwu Valentine Chibuzor</span></span>
       </div>
     </div>
   );
